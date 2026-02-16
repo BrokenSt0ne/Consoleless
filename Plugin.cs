@@ -26,6 +26,8 @@ namespace Consoleless
         {
             "https://iidk.online/",
             "https://raw.githubusercontent.com/iiDk-the-actual/Console",
+            "https://hamburbur.org/data",
+            "https://hamburbur.org/telemetry",
             "https://data.hamburbur.org",
             "https://files.hamburbur.org"
         };
