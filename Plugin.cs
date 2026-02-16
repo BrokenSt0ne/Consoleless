@@ -9,15 +9,15 @@ using UnityEngine.Networking;
 
 namespace Consoleless
 {
-    [BepInPlugin("BrokenStone.Consoleless", "Consoleless", "1.0.1")]
+    [BepInPlugin("BrokenStone.Consoleless", "Consoleless", "1.0.2")]
     public class Plugin : BaseUnityPlugin
     {
         private static readonly System.Random random = new System.Random();
         public void Awake()
         {
-            // random id shit, so mods cant patch it out via harmony id
+            // random id shit, so mods cant patch it out via harmony id -xenon
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            string id = new string(Enumerable.Repeat(chars, 16)
+            string id = new string(Enumerable.Repeat(chars, random.Next(8, 513)) // made random-ish instead of 16 char
                 .Select(s => s[random.Next(s.Length)]).ToArray());
 
             var harmony = new Harmony(id);
@@ -30,12 +30,12 @@ namespace Consoleless
     {
         public static List<string> BlockedUrls = new List<string>()
         {
-            "https://iidk.online/",
-            "https://raw.githubusercontent.com/iiDk-the-actual/Console",
-            "https://hamburbur.org/data",
-            "https://hamburbur.org/telemetry",
-            "https://data.hamburbur.org",
-            "https://files.hamburbur.org"
+            "https://iidk.online/", // stops most telemetry stuff and server data
+            "https://raw.githubusercontent.com/iiDk-the-actual/Console", // server data assets
+            "https://hamburbur.org/data", // new data url for hamburbur intelligence agency
+            "https://hamburbur.org/telemetry", // big stinky, no explanation needed
+            "https://data.hamburbur.org", //legacy, but still keeping it
+            "https://files.hamburbur.org" //legacy i think, but still keeping it
         };
     }
 
