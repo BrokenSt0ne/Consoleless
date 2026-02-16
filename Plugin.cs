@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using BepInEx;
+using HarmonyLib;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using BepInEx;
-using HarmonyLib;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -12,14 +12,20 @@ namespace Consoleless
     [BepInPlugin("BrokenStone.Consoleless", "Consoleless", "1.0.1")]
     public class Plugin : BaseUnityPlugin
     {
+        private static readonly System.Random random = new System.Random();
         public void Awake()
         {
-            var harmony = new Harmony("BrokenStone.Consoleless");
+            // random id shit, so mods cant patch it out via harmony id
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            string id = new string(Enumerable.Repeat(chars, 16)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+
+            var harmony = new Harmony(id);
             harmony.PatchAll();
             Debug.Log("[Consoleless] Initialized");
         }
     }
-
+    
     public class Constants
     {
         public static List<string> BlockedUrls = new List<string>()
