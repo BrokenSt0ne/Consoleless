@@ -9,7 +9,7 @@ using UnityEngine.Networking;
 
 namespace Consoleless
 {
-    [BepInPlugin("BrokenStone.Consoleless", "Consoleless", "1.0.2")]
+    [BepInPlugin("BrokenStone.Consoleless", "Consoleless", "1.0.3")]
     public class Plugin : BaseUnityPlugin
     {
         private static readonly System.Random random = new System.Random();
