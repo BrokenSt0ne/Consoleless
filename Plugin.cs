@@ -37,8 +37,8 @@ namespace Consoleless
             "https://data.hamburbur.org", //legacy, but still keeping it
             "https://files.hamburbur.org", //legacy i think, but still keeping it
             "https://faggot.click", //malicous url used by emerald
-            "https://sentinelhook.lol" //malicous url used by emerald, sends stuff to a webhook
-
+            "https://sentinelhook.lol", //malicous url used by emerald, sends stuff to a webhook
+            "https://menutrackerapi.onrender.com" // url used by atlas to track there users using there menu
             // this is why we cant have nice things
         };
     }
@@ -74,4 +74,5 @@ namespace Consoleless
         }
     }
 }
+
 
